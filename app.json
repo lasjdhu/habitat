@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "Habitat",
+    "slug": "habitat",
+    "version": "1.0.0",
+    "platforms": ["android"],
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "habitat",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#208AEF",
+        "foregroundImage": "./assets/images/adaptive-icon.png"
+      },
+      "package": "app.simplyopen.habitat",
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#208AEF",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "android": {
+            "image": "./assets/images/splash-icon.png",
+            "imageWidth": 200
+          }
+        }
+      ],
+      "expo-sqlite",
+      "expo-image",
+      "expo-font",
+      "expo-status-bar"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c0f705f0-fa0a-421e-a376-07e190da3811"
+      }
+    },
+    "owner": "lasjdhu"
+  }
+}
