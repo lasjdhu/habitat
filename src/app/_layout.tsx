@@ -1,4 +1,5 @@
 import { Stack, usePathname, useRouter } from "expo-router";
+import { Observe, ObserveRoot, useObserve } from "expo-observe";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as SplashScreen from "expo-splash-screen";
 import * as SystemUI from "expo-system-ui";
@@ -22,7 +23,15 @@ import { AppProvider, useApp } from "@/lib/store";
 
 void SplashScreen.preventAutoHideAsync();
 
+Observe.configure({
+  dispatchingEnabled: true,
+  integrations: {
+    "expo-router": true,
+  },
+});
+
 function RootLayoutContent() {
+  const { markInteractive } = useObserve();
   const router = useRouter();
   const pathname = usePathname();
   const { profile, refreshData, isLoading: isAppDataLoading } = useApp();
@@ -110,7 +119,8 @@ function RootLayoutContent() {
     }
 
     void SplashScreen.hideAsync();
-  }, [pathname, startupReady]);
+    markInteractive();
+  }, [markInteractive, pathname, startupReady]);
 
   useEffect(() => {
     void SystemUI.setBackgroundColorAsync(colors.background);
@@ -147,7 +157,7 @@ function RootLayoutContent() {
   );
 }
 
-export default function RootLayout() {
+function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <AppProvider>
@@ -158,3 +168,5 @@ export default function RootLayout() {
     </GestureHandlerRootView>
   );
 }
+
+export default ObserveRoot.wrap(RootLayout);
