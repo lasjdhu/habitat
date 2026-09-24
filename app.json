@@ -13,11 +13,15 @@
         "backgroundColor": "#208AEF",
         "foregroundImage": "./assets/images/adaptive-icon.png"
       },
-      "package": "app.simplyopen.habitat",
+      "package": "online.dmitrii.habitat",
       "predictiveBackGestureEnabled": false
+    },
+    "ios": {
+      "bundleIdentifier": "online.dmitrii.habitat"
     },
     "plugins": [
       "expo-router",
+      "expo-dev-client",
       [
         "expo-splash-screen",
         {
